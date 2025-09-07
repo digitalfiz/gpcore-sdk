@@ -1,0 +1,36 @@
+[tools]
+python = "3.12"
+poetry = "latest"
+pre-commit = "latest"
+
+[tasks.regenerate]
+description = "Regenerate SDK from GPortal protobuf specs"
+run = "scripts/regenerate_sdk.sh"
+
+[tasks.test]
+description = "Test SDK import and functionality"
+run = "scripts/dev.sh test"
+
+[tasks.clean]
+description = "Clean up temporary files and cache"
+run = "scripts/dev.sh clean"
+
+[tasks.check]
+description = "Check SDK structure and imports"
+run = "scripts/dev.sh check"
+
+[tasks.install]
+description = "Install/update dependencies"
+run = "scripts/dev.sh install"
+
+[tasks.dev]
+description = "Show development commands"
+run = "scripts/dev.sh help"
+
+[tasks.lint]
+description = "Run ruff linting on custom SDK code"
+run = "poetry run ruff check src/gpcore_sdk"
+
+[tasks.format]
+description = "Format code with ruff"
+run = "poetry run ruff format src/gpcore_sdk"
